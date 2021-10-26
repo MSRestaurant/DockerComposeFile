@@ -48,9 +48,24 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
-
-
-  
+      
+ MSCommande-A:
+  build: C:\Users\syrine\Documents\GitHub\MSCommande
+  image: commande
+  ports:
+    - 8085:8085
+  depends_on:
+   - Eureka
+  environment:
+   EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://Eureka:8761/eureka   
+   SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/restaurant?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+        "spring.datasource.username" : "sisou",
+        "spring.datasource.password" : "sisou",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+ 
 
 volumes:
   db:
